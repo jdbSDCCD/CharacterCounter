@@ -1,0 +1,30 @@
+#include <xc.h>
+.data
+.align   
+helloString:                                                                     
+       .asciz "Hello World\n"       
+.text
+.align
+       
+/********************************************************************/
+.global asmFunction
+
+asmFunction:
+   mov r2,#0
+   ldr r1, = helloString
+   
+loop:
+   ldrb r0,[R1, R2]
+   add r2,r2,#1
+   
+   cmp r0, #0
+   
+   bne loop
+   
+   mov pc, lr
+   
+.end asmFunction
+   
+/**********************************************************************/   
+.end
+ 
